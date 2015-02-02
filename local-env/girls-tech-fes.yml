@@ -1,0 +1,6 @@
+- hosts: vagrant
+  sudo: true
+  user: vagrant
+  tasks:
+    - name: install the latest version of git
+      yum: name=git state=latest

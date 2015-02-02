@@ -1,0 +1,19 @@
+# -*- coding: utf-8 -*-
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box = "sl6-64"
+  config.vm.box_url = "http://lyte.id.au/vagrant/sl6-64-lyte.box"
+
+  config.vm.network :private_network, ip: "192.168.33.10"
+
+  config.vm.provider :virtualbox do |vb|
+    vb.name = "girls-tech-fes"
+  end
+
+  config.vm.provision :ansible do |ansible|
+    ansible.playbook = "girls-tech-fes.yml"
+    ansible.inventory_path = "hosts"
+  end
+end
