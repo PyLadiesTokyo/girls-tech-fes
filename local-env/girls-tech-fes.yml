@@ -1,0 +1,71 @@
+- hosts: vagrant
+  user: vagrant
+
+  vars:
+    python_version: 2.7.9
+
+  tasks:
+  - name: install basic packages
+    sudo: yes
+    yum: name={{item}} state=present
+    with_items:
+    - git
+    - vim
+    - emacs
+
+  - name: install packages for building Python (and IPython)
+    sudo: yes
+    yum: name={{item}} state=present
+    with_items:
+    - gcc
+    - gcc-c++
+    - zlib-devel
+    - bzip2-devel
+    - openssl-devel
+    - ncurses-devel
+    - sqlite-devel
+    - readline-devel
+    - tk-devel
+    - gcc-gfortran
+    - libpng-devel
+    - freetype-devel
+    - python-devel
+    - blas-devel
+    - lapack-devel
+
+  - name: install pyenv and specified Python
+    shell: |
+      git clone https://github.com/yyuu/pyenv.git ~/.pyenv
+      (
+          echo 'export PYENV_ROOT=~/.pyenv'
+          echo 'export PATH=$PYENV_ROOT/bin:$PATH'
+          echo 'eval "$(pyenv init -)"'
+      ) >> ~/.bashrc
+      source ~/.bashrc
+      pyenv install {{python_version}}
+      pyenv rehash
+      pyenv global {{python_version}}
+
+  - name: install Python packages using pip
+    pip: name={{item}}
+    with_items:
+    - ipython
+    - jinja2
+    - tornado
+    - pyzmq
+    - pytest
+    - numpy
+    - scipy
+    - matplotlib
+    - pandas
+
+  - name: create IPython profile
+    shell: |
+      ipython profile create pyladies
+
+  - name: update IPython configuration
+    template: src=ipython_notebook_config.py.j2 dest=~/.ipython/profile_pyladies/ipython_notebook_config.py
+
+  - name: stop iptables
+    sudo: yes
+    service: name=iptables state=stopped
