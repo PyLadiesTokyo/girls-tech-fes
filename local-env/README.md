@@ -7,8 +7,8 @@ Vagrant上に今回必要となる仮想環境をらくらく構築するため�
 - Python 2.7.9
   - pip 6.0.7
     - ansible 1.8.2 (`pip install ansible`で導入可能)
-- Vagrant 1.4.3
-- VirtualBox 4.3.8 (VMWare等を利用されている場合は，適宜Vagrantfileを書き換えて下さい)
+- Vagrant 1.6.2
+- VirtualBox 4.3.10 (VMWare等を利用されている場合は，適宜Vagrantfileを書き換えて下さい)
 
 ## 仮想環境構築手順
 Private IPとかはよしなに書き換える  
