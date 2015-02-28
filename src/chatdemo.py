@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#
+# coding:UTF-8
 # Copyright 2009 Facebook
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may
@@ -99,6 +99,9 @@ def main():
     tornado.options.parse_command_line()
     app = Application()
     app.listen(options.port)
+    print u"サーバを起動します。"
+    print u"http://localhost:" + str(options.port) + u" にアクセスしてください"
+    print u"止めるときは Ctrl + c を押してください"
     tornado.ioloop.IOLoop.instance().start()
 
 
