@@ -13,10 +13,6 @@
 # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 # License for the specific language governing permissions and limitations
 # under the License.
-"""Simplified chat demo for websockets.
-
-Authentication, error handling, etc are left as an exercise for the reader :)
-"""
 
 import logging
 import tornado.escape
@@ -44,11 +40,10 @@ class Application(tornado.web.Application):
             (r"/chatsocket", ChatSocketHandler),
         ]
         settings = dict(
-            #本当はこんな簡素なcookie名にしちゃいけないよ
             cookie_secret="__pyladies_girls_tech_fes_demo_cookie__",
             template_path=os.path.join(os.path.dirname(__file__), "templates"),
             static_path=os.path.join(os.path.dirname(__file__), "static"),
-            #Cookieデータが存在しない場合は下記へ強制リダイレクト
+
             login_url="/name/inputname",
             autoescape="xhtml_escape",
             xsrf_cookies=True,
