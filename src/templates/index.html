@@ -2,10 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Tornado Chat Demo</title>
+    <title>PyLadies Tokyo Workshop 〜chat demo〜</title>
     <link rel="stylesheet" href="{{ static_url("chat.css") }}" type="text/css"/>
   </head>
   <body>
+    <div id="nav">
+        <a href="/name/signout">{{ _("Sign out") }}</a>
+    </div>
     <div id="body">
       <div id="inbox">
         {% for message in messages %}
