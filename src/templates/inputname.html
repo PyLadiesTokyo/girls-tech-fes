@@ -3,15 +3,17 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>PyLadies Tokyo Workshop 〜chat demo〜</title>
+    <link rel="stylesheet" href="{{ static_url("normalize.css") }}" type="text/css"/>
     <link rel="stylesheet" href="{{ static_url("chat.css") }}" type="text/css"/>
   </head>
   <body>
     <div id="body">
       <div id="input">
-          <form action="/name/signup" method="post">
+          <img src="{{ static_url("pyladies_tokyo_logo.png") }}">
+          <p>PyLadies&nbsp;Tokyo&nbsp;Workshop&nbsp;＠Girls&nbsp;Tech&nbsp;Fes&nbsp;へようこそ！</p>
+          <p>画面に表示させるお名前を記入してください★</p>
+          <form action="/name/signup" method="post" class="input_name">
               {% module xsrf_form_html() %}
-              <p>PyLadies&nbsp;Tokyo&nbsp;Workshop&nbsp;＠Girls&nbsp;Tech&nbsp;Fes&nbsp;へようこそ！</p>
-              <p>画面に表示させるお名前を記入してください★</p>
               <input type="text" name="username"/>
               <input type="submit" value="Sign up"/>
           </form>
