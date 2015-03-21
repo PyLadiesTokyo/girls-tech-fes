@@ -141,7 +141,10 @@ class SignUpHandler(BaseHandler):
             self.set_secure_cookie(u"chatdemo_user", tornado.escape.utf8(username))
             self.redirect(u"/")
         else:
-            self.write_error(403)
+            self.set_status = 403
+            self.set_header('Content-Type', 'text/html; charset="utf-8"')
+            self.finish(
+                '名前が入力されていません。最初からやり直して下さい。<br><a href=http://localhost:{port}>ログインページに戻る</a>'.format(port=options.port))
 
 
 # テストのために必要性を感じたのでCookie削除処理をつけました。
