@@ -63,6 +63,9 @@ crashlytics-build.properties
 [Ss]cripts
 pyvenv.cfg
 
+# pyenv
+.python-version
+
 
 ### Python template
 # Byte-compiled / optimized / DLL files
