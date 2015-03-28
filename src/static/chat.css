@@ -2,11 +2,13 @@ html, body {
   width: 100%;
   height: 100%;
   background-color: #FFB8A8;
+  position: relative;
 }
 #container {
   height: 100%;
-  width: 80%;
+  width: 800px;
   margin: 0 auto;
+  position: relative;
 }
 
 /*
@@ -31,7 +33,7 @@ html, body {
  * index
  */
 #nav {
-  margin-top: 10px;
+  padding-top: 10px;
   text-align: right;
 }
 #nav .button {
@@ -40,7 +42,7 @@ html, body {
 
 #inbox {
   position: absolute;
-  bottom:60px;
+  bottom:80px;
 }
 #message_form {
   width:100%;
@@ -49,6 +51,8 @@ html, body {
 }
 #input_message {
   text-align: center;
+  width: 800px;
+  margin: 0 auto;
 }
 
 #input_message .input{
