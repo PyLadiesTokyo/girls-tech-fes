@@ -115,6 +115,7 @@ html, body {
   border-radius: 15px;
   clear: both;
   max-width: 500px;
+  word-breake:break-all;
 }
 .left_balloon:after,
 .left_balloon:before {
