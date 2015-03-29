@@ -95,6 +95,8 @@ class SignUpHandler(BaseHandler):
     def get(self):
         self.render(u"login.html")
 
+
+
     # <form action="/name/setname" method="post"> の記述により
     # inputname.htmlから最初に呼ばれるdefはこちら。
     """
