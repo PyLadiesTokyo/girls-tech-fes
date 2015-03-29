@@ -1,18 +1,4 @@
 # -*- coding: utf-8 -*-
-#
-# Copyright 2009 Facebook
-#
-# Licensed under the Apache License, Version 2.0 (the "License"); you may
-# not use this file except in compliance with the License. You may obtain
-# a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
-# License for the specific language governing permissions and limitations
-# under the License.
 
 import logging
 import tornado.escape
@@ -31,7 +17,6 @@ define(u"debug", default=False, help=u"run in debug mode")
 
 class Application(tornado.web.Application):
     def __init__(self):
-        # URLの指定
         handlers = [
             (ur"/", MainHandler),
             (ur"/name/inputname", InputNameHandler),
@@ -56,8 +41,6 @@ class BaseHandler(tornado.web.RequestHandler):
     def get_current_user(self):
         username = self.get_secure_cookie(u"chatdemo_user")
 
-        # cookieが値を返すとパスできる
-        # 何もないとlogin_urlへリダイレクトされる → login_urlの指定がなければloginなしのシステムとなる
         if not username:
             return None
         return tornado.escape.utf8(username)
@@ -75,39 +58,25 @@ class ChatSocketHandler(tornado.websocket.WebSocketHandler):
     cache_size = 200
 
     def get_compression_options(self):
-        # Non-None enables compression with default options.
         return {}
-    """
 
-    2. チャット機能を作ろう
-
-    """
+    # 2. チャット機能を作ろう
+    # この下にプログラムをコピーしてきて下さい
 
 
-# ログインの代わりに名前の入力してもらう
 class InputNameHandler(BaseHandler):
     def get(self):
         self.render(u"inputname.html")
 
 
-# 入力した名前をCookieにセット。チャットページで使えるようにする。
 class SignUpHandler(BaseHandler):
     def get(self):
         self.render(u"login.html")
 
+    # 1. チャットページに遷移しよう
+    # この下にプログラムをコピーしてきて下さい
 
 
-    # <form action="/name/setname" method="post"> の記述により
-    # inputname.htmlから最初に呼ばれるdefはこちら。
-    """
-
-    1. チャットページに遷移しよう
-
-    """
-
-
-# テストのために必要性を感じたのでCookie削除処理をつけました。
-# 本来今回のworkshopでは不要な処理です。。。
 class SignOutHandler(BaseHandler):
     def get(self):
         self.clear_cookie(u"chatdemo_user")
