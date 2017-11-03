@@ -1,0 +1,4 @@
+<div class="message" id="m{{ message["id"] }}">
+<b>{{ message["from"] }}: </b>
+<span class="left_balloon">{% module linkify(message["body"]) %}</span>
+</div>

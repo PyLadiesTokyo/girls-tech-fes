@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>PyLadies Tokyo Workshop 〜chat demo〜</title>
+    <link rel="stylesheet" href="{{ static_url("normalize.css") }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ static_url("chat.css") }}" type="text/css"/>
+  </head>
+  <body>
+    <div id="container">
+      <div id="input">
+          <img src="{{ static_url("pyladies_tokyo_logo.png") }}">
+          <p>PyLadies&nbsp;Tokyo&nbsp;Workshop&nbsp;＠Girls&nbsp;Tech&nbsp;Fes&nbsp;へようこそ！</p>
+          <p>画面に表示させるお名前を記入してください★</p>
+          <form action="/name/signup" method="post" class="input_name">
+              {% module xsrf_form_html() %}
+              <input type="text" name="username" class="input white_shadow"/>
+              <input type="submit" value="Sign up" class="button button_transmit"/>
+          </form>
+      </div>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js" type="text/javascript"></script>
+  </body>
+</html>
